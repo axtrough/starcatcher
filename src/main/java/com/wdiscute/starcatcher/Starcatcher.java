@@ -1,19 +1,20 @@
 package com.wdiscute.starcatcher;
 
-import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
-import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
-import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.AbstractSweetSpotBehaviour;
+import com.wdiscute.starcatcher.io.ModDataAttachments;
+import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.registry.*;
+import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
+import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.AbstractSweetSpotBehaviour;
+import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.client.Minecraft;
@@ -32,8 +33,7 @@ import net.neoforged.neoforge.registries.RegistryBuilder;
 import java.util.function.Supplier;
 
 @Mod(Starcatcher.MOD_ID)
-public class Starcatcher
-{
+public class Starcatcher {
     public static final String MOD_ID = "starcatcher";
 
     public static final ResourceKey<Registry<FishProperties>> FISH_REGISTRY =
@@ -74,26 +74,12 @@ public class Starcatcher
             .defaultKey(Starcatcher.rl("pearl"))
             .create();
 
-    public static double truncatedNormal(double mean, double deviation)
-    {
-        while (true)
-        {
-            double value = mean + deviation * U.r.nextGaussian();
-            if (value >= mean - deviation && value <= mean + deviation)
-            {
-                return value;
-            }
-        }
-    }
-
-    public static ResourceLocation rl(String s)
-    {
+    public static ResourceLocation rl(String s) {
         return ResourceLocation.fromNamespaceAndPath(Starcatcher.MOD_ID, s);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void fishCaughtToast(FishProperties fp, boolean newFish, int sizeCM, int weightCM)
-    {
+    public static void fishCaughtToast(FishProperties fp, boolean newFish, int sizeCM, int weightCM) {
         if (newFish) Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
 
         SettingsScreen.Units units = Config.UNIT.get();
@@ -111,8 +97,7 @@ public class Starcatcher
     }
 
 
-    public Starcatcher(IEventBus modEventBus, ModContainer modContainer)
-    {
+    public Starcatcher(IEventBus modEventBus, ModContainer modContainer) {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.ITEMS_REGISTRY.register(modEventBus);

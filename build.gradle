@@ -35,8 +35,16 @@ repositories
     }
 
     //modrinth
-    maven {
-        url = "https://api.modrinth.com/maven"
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
@@ -80,7 +88,6 @@ dependencies {
     //compileOnly files(".compatmods/DistantHorizons-2.3.6-b-1.21.1-fabric-neoforge.jar")
     //runtimeOnly files(".compatmods/DistantHorizons-2.3.6-b-1.21.1-fabric-neoforge.jar")
 
-
     //ftb teams
     compileOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
     compileOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
@@ -90,9 +97,7 @@ dependencies {
     //runtimeOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
     //runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
 
-
-
-
+    implementation("maven.modrinth:kap_lib:v${kap_lib_version}-mc${mc_version}:publish")
 }
 
 publishing {

@@ -16,17 +16,17 @@ public class MinecraftFishingProperties {
         //ocean
         register(overworldOceanFish(BuiltInRegistries.ITEM.wrapAsHolder(Items.COD))
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
-                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000)));
+                .withSizeAndWeight(FishProperties.sizeWeight(40, 120, 5000, 19000)));
 
         register(overworldOceanFish(BuiltInRegistries.ITEM.wrapAsHolder(Items.PUFFERFISH))
-                .withSizeAndWeight(FishProperties.sizeWeight(70, 20, 10000, 3000))
+                .withSizeAndWeight(FishProperties.sizeWeight(50, 90, 7000, 13000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withBaseChance(4));
 
         //river
         register(overworldRiverFish(BuiltInRegistries.ITEM.wrapAsHolder(Items.SALMON))
-                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 10000, 8000)));
+                .withSizeAndWeight(FishProperties.sizeWeight(40, 120, 2000, 18000)));
 
 
         //mobs
